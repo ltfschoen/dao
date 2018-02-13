@@ -5,7 +5,7 @@
 npm install -g truffle
 ```
 
-* Terminal Tab 2 - Install Test Framework with Ethereum TestRPC
+* Terminal Tab 2 - Install Test Framework with Ganache CLI (Ethereum TestRPC)
 ```
 npm install -g ganache-cli
 ```
@@ -21,7 +21,7 @@ ganache-cli \
   --gasPrice=2000000000;
 ```
 
-* Terminal Tab 1 - Compile and Deploy the FixedSupplyToken Contract
+* Terminal Tab 1 - Compile and Deploy the Contract
 ```
 truffle migrate --network development
 ```
