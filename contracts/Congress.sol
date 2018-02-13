@@ -1,23 +1,8 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
-contract owned {
-    address public owner;
+import "./Owned.sol";
 
-    function owned()  public {
-        owner = msg.sender;
-    }
-
-    modifier onlyOwner {
-        require(msg.sender == owner);
-        _;
-    }
-
-    function transferOwnership(address newOwner) onlyOwner  public {
-        owner = newOwner;
-    }
-}
-
-contract tokenRecipient {
+contract TokenRecipient {
     event receivedEther(address sender, uint amount);
     event receivedTokens(address _from, uint256 _value, address _token, bytes _extraData);
 
@@ -36,7 +21,7 @@ interface Token {
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success);
 }
 
-contract Congress is owned, tokenRecipient {
+contract Congress is Owned, TokenRecipient {
     // Contract Variables and events
     uint public minimumQuorum;
     uint public debatingPeriodInMinutes;
@@ -91,7 +76,7 @@ contract Congress is owned, tokenRecipient {
         uint minimumQuorumForProposals,
         uint minutesForDebate,
         int marginOfVotesForMajority
-    )  payable public {
+    ) payable public {
         changeVotingRules(minimumQuorumForProposals, minutesForDebate, marginOfVotesForMajority);
         // It’s necessary to add an empty first member
         addMember(0, "");

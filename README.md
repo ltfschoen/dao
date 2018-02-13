@@ -34,3 +34,8 @@ truffle test
 # Debugging
 
 * Debug the Solidity Smart Contract in Remix IDE and MIST
+
+# Troubleshooting
+
+* If you get error `Error: Congress contract constructor expected 3 arguments, received 0` then ensure sufficient arguments are passed to the construction function of the smart contract in **2_deploy_contracts.js**.
+  * Reference: https://github.com/trufflesuite/truffle/issues/446
