@@ -1,6 +1,8 @@
 pragma solidity ^0.4.19;
 
-import "./Token.sol";
+interface Token {
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success);
+}
 
 contract TokenRecipient {
     event receivedEther(address sender, uint amount);
